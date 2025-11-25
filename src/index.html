@@ -56,16 +56,14 @@
               uses: indiefellas/deploy2nekoweb@main
               with:
                 nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
-                nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
                 nekoweb-domain: 'yoursite.nekoweb.org'
                 nekoweb-username: 'yourname'
                 directory: 'public'</code></pre>
 
     <h3>config</h3>
     <p>
-		 <code>nekoweb-api-key</code> - the API key for your nekoweb account <small>(get it from <a href="https://nekoweb.org/api">here</a>)</small><br/>
-		 <code>nekoweb-cookie</code> <i>(optional)</i> - the cookie for your nekoweb account <small>(required for Recently Updated feature) <a href="#getting-your-cookie">get your cookie here!</a></small><br/>
-		<code>nekoweb-domain</code> - the nekoweb site you will deploy to <small>(if you have a custom domain like <code>my-awesome-site.com</code>, use that here)</small><br/>
+		  <code>nekoweb-api-key</code> - the API key for your nekoweb account <small>(get it from <a href="https://nekoweb.org/api">here</a>)</small><br/>
+		  <code>nekoweb-domain</code> - the nekoweb site you will deploy to <small>(if you have a custom domain like <code>my-awesome-site.com</code>, use that here)</small><br/>
       <code>nekoweb-username</code> - your nekoweb username<br/>
       <code>directory</code> - the directory in your repository that will be deployed to nekoweb<br/>
     </p>
@@ -73,7 +71,7 @@
     <h3 class="orange">important information!</h3>
     <p>
       when using this action, make sure to use the <a href="#repo-secret">Secrets and variables</a> feature in GitHub
-      to store your API key and cookie. this is to prevent any unauthorized access to your account.
+      to store your API key. this is to prevent any unauthorized access to your account.
     </p>
 
     <h4 id="repo-secret">how to make a repository secret</h4>
@@ -85,60 +83,6 @@
       <li>press the <b>New repository secret</b> button</li>
       <li>profit.</li>
     </ol>
-
-
-    <h4 id="getting-your-cookie">getting your cookie!</h4>
-    <noscript>
-      <p>
-        to get your cookie, you need to be logged into nekoweb and open the <b>Developer Tools</b>
-        and go to the <b>Network</b> tab. then, refresh the page and look for a request
-        to <code>deploy.nekoweb.org</code>. open the request and click on the <b>Headers</b> tab.
-        under the <b>Request Headers</b> section, look for the <code>Cookie</code> header and copy
-        the value after <code>token=</code>.
-      </p>
-    </noscript>
-    <yescript>
-      <p>
-        to get your cookie, you need to be logged into nekoweb and open the <b>Developer Tools</b> on this site
-        and go to the <b>Network</b> tab. then, refresh the page and look for a request
-        to <code>deploy.nekoweb.org</code>. right click on the request and click on
-		  <b>Copy > Copy as cURL (bash)</b> on Chrome, or on Firefox, <b>Copy Value > Copy cURL (POSIX)</b>. then just paste the command below to get your cookie!
-		  <br>
-        <b>important!!! your cookie will update at some point... so if something goes wrong that'd probably the situation.</b>
-      </p>
-
-      <textarea type="text" id="cookie" style="resize: none;"></textarea>
-      <label for="cookie">paste cURL output above</label>
-
-      <p>
-        <code id="cookie-output" style="word-break:break-all;">...</code>
-      </p>
-    </yescript>
-
-    <script>
-      document.querySelector('#raw-code').parentElement.style.display = 'none';
-      function extractCookieHeader(curlCommand) {
-        const cookieMatch = curlCommand.match(/-H\s+'cookie:\s*([^']+)'/i);
-        return cookieMatch ? cookieMatch[1] : null;
-      }
-
-    function getTokenFromCurl(curlCommand) {
-    const cookieHeader = extractCookieHeader(curlCommand);
-    if (cookieHeader) {
-        const cookies = cookieHeader.split('; '); // Split the header by '; ' to get individual key-value pairs
-        const tokenCookie = cookies.find(cookie => cookie.startsWith('token=')); // Find the 'token=' pair
-        if (tokenCookie) {
-            return tokenCookie.split('=')[1]; // Split the token pair and return the value
-        }
-    }
-    return null; // Return null if token is not found
-}
-
-      document.querySelector('#cookie').onkeyup = function(e) {
-        const token = getTokenFromCurl(e.target.value);
-        document.querySelector('#cookie-output').innerText = token || '...';
-      };
-    </script>
 
     <script type="module">
       import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
@@ -153,7 +97,7 @@
 
     <hr/>
     <div style="width:100%;text-align:center;margin-bottom:20px;">
-      (c) 2024 <a href="https://github.com/maxpixels64">maxpixels</a> & <a href="https://github.com/ThinLiquid">ThinLiquid</a>
+      (c) 2025 <a href="https://github.com/indiefellas">nkko</a>
     </div>
   </body>
 </html>
