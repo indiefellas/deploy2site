@@ -24,7 +24,7 @@
     <hr />
     <p>
       <b>deploy2nekoweb</b> is a GitHub Action that efficiently deploys your
-      website(s) to <a href="https://nekoweb.org/">nekoweb</a> with ease.
+      website(s) to <a href="https://nekoweb.org/">nekoweb</a> with ease whenever you make a commit.
     </p>
     <p>
       using the power of <a href="https://bun.sh">bun</a>, it's never been more faster to deploy a
@@ -56,9 +56,17 @@
               uses: indiefellas/deploy2nekoweb@main
               with:
                 nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
-                nekoweb-domain: 'deploy.nekoweb.org'
-                nekoweb-username: 'deploy'
+                nekoweb-domain: 'yoursite.nekoweb.org'
+                nekoweb-username: 'yourname'
                 directory: 'public'</code></pre>
+
+    <h3>config</h3>
+    <p>
+		  <code>nekoweb-api-key</code> - the API key for your nekoweb account <small>(get it from <a href="https://nekoweb.org/api">here</a>)</small><br/>
+		  <code>nekoweb-domain</code> - the nekoweb site you will deploy to <small>(if you have a custom domain like <code>my-awesome-site.com</code>, use that here)</small><br/>
+      <code>nekoweb-username</code> - your nekoweb username<br/>
+      <code>directory</code> - the directory in your repository that will be deployed to nekoweb<br/>
+    </p>
 
     <h3 class="orange">important information!</h3>
     <p>
@@ -75,15 +83,6 @@
       <li>press the <b>New repository secret</b> button</li>
       <li>profit.</li>
     </ol>
-
-    <h3>config</h3>
-    <p>
-      <code>nekoweb-api-key</code>* - the API key for your nekoweb account<br/>
-      <code>nekoweb-domain</code>* - the nekoweb domain you will deploy to<br/>
-      <code>nekoweb-username</code>* - your nekoweb username<br/>
-      <code>directory</code>* - the directory to deploy to nekoweb<br/>
-    </p>
-    <p>* required</p>
 
     <script type="module">
       import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
